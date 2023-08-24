@@ -1,9 +1,8 @@
 import React from 'react'
+import Restaurant from './component/Basics/Restaurant'
 
 const App = () => {
-  return (
-    <h1>Welcome Vishal Raj</h1>
-  )
+  return <Restaurant />
 }
 
 export default App
