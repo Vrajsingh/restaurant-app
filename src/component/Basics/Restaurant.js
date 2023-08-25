@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
+import Menu from "./menuApi.js";
+import MenuCard from './MenuCard';
 
 const Restaurant = () => {
+    const [menuData, setMenuData] = useState(Menu);
+    const filterItem = (category) => {
+        if (category === "All") {
+          setMenuData(Menu);
+          return;
+        }
+    
+        const updatedList = Menu.filter((curElem) => {
+          return curElem.category === category;
+        });
+    
+        setMenuData(updatedList);
+      };
+
   return (
     <>
-    <div className= "card-container">
-        <div className = "card">
-            <div className = "card-body">
-                <span className =  "card-number card-circle subtle">1</span>
-                <span className = "card-author subtle">Breakfast</span>
-                <h2 className = "card-title">Maggie</h2>
-                <span className = "card-description subtle">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi veniam nisi ad repellendus, debitis harum!
-                </span>
-                <div className = "card-read">Read</div>
-            </div>
-            <img src="" alt= "images" className = "card-media" />
-            <span className = "card-tag subtle">Order Now</span> 
+    <nav className="navbar">
+        <div className = "btn-group">
+            <button className = "btn-group__item" onClick={() => filterItem("breakfast")}>Breakfast</button>
+            <button className = "btn-group__item" onClick={() => filterItem("lunch")}>Lunch</button>
+            <button className = "btn-group__item" onClick={() => filterItem("snacks")}>Snacks</button>
+            <button className = "btn-group__item" onClick={() => filterItem("dinner")}>Dinner</button>
+            <button className = "btn-group__item" onClick={() => setMenuData(Menu)}>All</button>
         </div>
-    </div>
+    </nav>
+    <MenuCard menuData = {menuData} />
     </>
   )
 }
