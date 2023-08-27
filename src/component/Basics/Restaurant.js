@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import "./style.css";
 import Menu from "./menuApi.js";
 import MenuCard from './MenuCard';
+import Navbar from './Navbar';
+
+// spread operator allows you to expand - or spread - arrays and objects into multiple elements
+const uniqueList = [ ...new Set(Menu.map((curElem) => {
+    return curElem.category;
+})), "All"];
+
+console.log(uniqueList);
 
 const Restaurant = () => {
     const [menuData, setMenuData] = useState(Menu);
+    const [menuList, setMenuList] = useState(uniqueList)
     const filterItem = (category) => {
         if (category === "All") {
           setMenuData(Menu);
@@ -19,16 +28,9 @@ const Restaurant = () => {
       };
 
   return (
-    <>
-    <nav className="navbar">
-        <div className = "btn-group">
-            <button className = "btn-group__item" onClick={() => filterItem("breakfast")}>Breakfast</button>
-            <button className = "btn-group__item" onClick={() => filterItem("lunch")}>Lunch</button>
-            <button className = "btn-group__item" onClick={() => filterItem("snacks")}>Snacks</button>
-            <button className = "btn-group__item" onClick={() => filterItem("dinner")}>Dinner</button>
-            <button className = "btn-group__item" onClick={() => setMenuData(Menu)}>All</button>
-        </div>
-    </nav>
+    //syntactic sugar format
+    <> 
+    <Navbar filterItem = {filterItem} menuList = {menuList}/>
     <MenuCard menuData = {menuData} />
     </>
   )

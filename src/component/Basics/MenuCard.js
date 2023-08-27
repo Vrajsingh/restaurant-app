@@ -7,7 +7,7 @@ const MenuCard = ({ menuData }) => {
     <>
       <section className="main-card--cointainer">
         {menuData.map((curElem) => {
-          const { id, name, category, image, description } = curElem;
+          const { id, name, category, image, description } = curElem;  //destructuring
 
           return (
             <>
