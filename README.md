@@ -1,6 +1,8 @@
 # REACT RESTAURANT APP
 WEBSITE LINK - https://64eacbe1d561de277406a222--merry-hummingbird-9940a5.netlify.app/
 
+<img width="1792" alt="Screenshot 2023-08-27 at 9 50 45 AM" src="https://github.com/Vrajsingh/restaurant-app/assets/45869380/425024c3-186b-4e44-bf5b-e0f467649380">
+
 
 
 # Getting Started with Create React App
